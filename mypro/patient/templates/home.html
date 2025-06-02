@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1> <a href ="{% url 'doctors_login' %}" > Doctor login </a> </h1>
+{% if request.user.is_authenticated %}
+<h1><a href="#">logout</a></h1>
+{% endif %}
+{% endblock %}
