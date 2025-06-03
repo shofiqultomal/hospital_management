@@ -4,6 +4,7 @@
 {% if request.user.is_authenticated %}
 <h1> <a href ="{% url 'doctor_logout' %}" > logout </a> </h1>
 <h1> <a href ="{% url 'doctor_reset_password' %}" > Reset Password </a> </h1>
+<h1> <a href ="{% url 'doctor_dashboard' %}" > doctor dashboard </a> </h1>
 {% else %}
 <h1> <a href ="{% url 'doctor_login' %}" > login </a> </h1>
 

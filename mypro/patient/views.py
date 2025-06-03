@@ -20,6 +20,7 @@ def doctor_login(request):
            login(request,user)
            return redirect('/')
         else:
+            messages.warning(request,"Invalid username or passwoard !")
             return redirect('doctor_login')
             
     return render(request,'login.html',{'page_title':'Doctor login'})
@@ -41,6 +42,16 @@ def doctor_reset_password(request):
     else:
             
         return render(request,'reset_password.html')
+
+# doctor dashboard
+def doctor_dashboard(request):
+    return render(request,'doctor-dashboard.html')
+
+# doctor quick add patient
+def quick_add_patient(request):
+    return render(request,'quick-add-patient-form.html')
+
+
 
 
 
