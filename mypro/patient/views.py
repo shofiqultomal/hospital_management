@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.urls import reverse_lazy
 
 # Create your views here.
 def home(request):
@@ -18,14 +20,14 @@ def doctor_login(request):
            login(request,user)
            return redirect('/')
         else:
-            return redirect('login.html')
+            return redirect('doctor_login')
             
     return render(request,'login.html',{'page_title':'Doctor login'})
 
 
 def doctor_logout(request):
     logout(request)
-    return redirect(request,'home.html')
+    return redirect('/')
 
 
 def doctor_reset_password(request):
