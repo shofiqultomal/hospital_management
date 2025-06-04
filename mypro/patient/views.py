@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.urls import reverse_lazy
 
+from .forms import QuickPatientForm
+
 # Create your views here.
 def home(request):
     return render(request,'home.html')
@@ -49,7 +51,22 @@ def doctor_dashboard(request):
 
 # doctor quick add patient
 def quick_add_patient(request):
-    return render(request,'quick-add-patient-form.html')
+    if request.method=='POST':
+
+        form = QuickPatientForm(request.POST)
+        if  form.is_valid():
+            form.save()
+            messages.success(request,"patient added successfully !")
+            return redirect('quick_add_patient')
+        else:
+            messages.warning(request,"samething is went to be waring !")
+            return redirect('quick_add_patient')
+         
+         
+    else:
+            form = QuickPatientForm
+
+            return render(request,'quick-add-patient-form.html',{'form':form})
 
 
 

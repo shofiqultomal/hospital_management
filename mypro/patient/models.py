@@ -12,6 +12,7 @@ class patient (models.Model):
     age = models.IntegerField(default=0)
     gender = models.CharField(choices=GENDER_CHOICES,default='male')
     mobile = models.IntegerField(null=True)
+    address=models.TextField(null=True)
     detail = models.TextField(null=True)
     medicine_detail = models.TextField(null=True)
     note = models.TextField(null=True)
